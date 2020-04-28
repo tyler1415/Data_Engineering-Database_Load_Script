@@ -158,4 +158,4 @@ GetDataFromFileName(inputList, fileList)
 
 PurgeDatabase(fileList)
 
-#PopulateDatabase(fileList)
+PopulateDatabase(fileList)
