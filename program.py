@@ -4,10 +4,10 @@ from datetime import datetime
 import os
 import pymongo
 
-#password = "m15C4pst0n3"
-#myClient = pymongo.MongoClient("mongodb+srv://OpenAdmin:" + password + "@cluster0-z4nqv.azure.mongodb.net/test?retryWrites=true&w=majority")
-#myDB = myClient["TestUAOpen"]
-#myCol = myDB["tests"]
+# password = "m15C4pst0n3"
+# myClient = pymongo.MongoClient("mongodb+srv://OpenAdmin:" + password + "@cluster0-z4nqv.azure.mongodb.net/test?retryWrites=true&w=majority")
+# myDB = myClient["TestUAOpen"]
+# myCol = myDB["tests"]
 
 # change IP address to server address as needed
 myClient = pymongo.MongoClient("mongodb://127.0.0.1:27017")
@@ -15,29 +15,28 @@ myClient = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 myDB = myClient["UA-Open"]
 # connect to the collection
 myCol = myDB["expenditure-data"]
-#inputList gets the file paths from the user
+# inputList gets the file paths from the user
 inputList = list()
-#fileList derives some attributes from the file name and stores them in the file class
+# fileList derives some attributes from the file name and stores them in the file class
 fileList = list()
+
 
 # This method is to get the list of files from the user to upload to the database
 def GetUserInput(inputList):
-
     count = input("How many files to upload?\n")
     intCount = int(count)
 
     for i in range(intCount):
-
         filePath = input("Please give the file paths of the files you want to convert.\n")
         inputList.append(filePath)
         print(filePath)
 
     return inputList
 
+
 # This method is to get info from the file name in the inputList and then upload that information to fileList.
 # fileList is just a list of file objects to be loaded into the database.
 def GetDataFromFileName(inputList, fileList):
-
     # iterate through all files in the input list to get attributes from them
     for i in inputList:
 
@@ -88,9 +87,9 @@ def GetDataFromFileName(inputList, fileList):
 
     return fileList
 
+
 # This method is to purge the database of the last time the file`s info was loaded into  the database
 def PurgeDatabase(fileList):
-
     # query to delete. Delete based on fYear, fPeriod, and funding source
     # also loop through all objects in fileList to purge database of that information
     for i in fileList:
@@ -103,9 +102,7 @@ def PurgeDatabase(fileList):
 
 # This method is to populate the database with the XML file that was given by the user
 def PopulateDatabase(fileList):
-
     for i in fileList:
-
         # change directory so you can grab xml file from outside this program.
         # Also get the root so you can then access the elements of XML document.
         os.chdir(r"" + i.get_folderQuery())
