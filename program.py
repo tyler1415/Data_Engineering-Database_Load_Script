@@ -4,6 +4,11 @@ from datetime import datetime
 import os
 import pymongo
 
+#password = "m15C4pst0n3"
+#myClient = pymongo.MongoClient("mongodb+srv://OpenAdmin:" + password + "@cluster0-z4nqv.azure.mongodb.net/test?retryWrites=true&w=majority")
+#myDB = myClient["TestUAOpen"]
+#myCol = myDB["tests"]
+
 # change IP address to server address as needed
 myClient = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 # connect to database
