@@ -20,7 +20,7 @@ inputList = list()
 #fileList derives some attributes from the file name and stores them in the file class
 fileList = list()
 
-
+# This method is to get the list of files from the user to upload to the database
 def GetUserInput(inputList):
 
     count = input("How many files to upload?\n")
@@ -34,7 +34,8 @@ def GetUserInput(inputList):
 
     return inputList
 
-
+# This method is to get info from the file name in the inputList and then upload that information to fileList.
+# fileList is just a list of file objects to be loaded into the database.
 def GetDataFromFileName(inputList, fileList):
 
     # iterate through all files in the input list to get attributes from them
@@ -87,7 +88,7 @@ def GetDataFromFileName(inputList, fileList):
 
     return fileList
 
-
+# This method is to purge the database of the last time the file`s info was loaded into  the database
 def PurgeDatabase(fileList):
 
     # query to delete. Delete based on fYear, fPeriod, and funding source
@@ -100,6 +101,7 @@ def PurgeDatabase(fileList):
         i = myCol.delete_many(myQuery)
 
 
+# This method is to populate the database with the XML file that was given by the user
 def PopulateDatabase(fileList):
 
     for i in fileList:
