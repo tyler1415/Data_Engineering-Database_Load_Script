@@ -74,6 +74,12 @@ def GetDataFromFileName(inputList, fileList):
         else:
             funding = "UA System Office"
 
+        # set source based off of funding
+        if funding == "The University of Alabama":
+            SOURCE = "UOFA"
+        else:
+            SOURCE = "UASYSTEM"
+
         # get the folder path from where you want to extract data from.
         folderPath = i.find("opn")
         folderQuery = i[0:folderPath - 7]
@@ -83,6 +89,7 @@ def GetDataFromFileName(inputList, fileList):
         file.set_fYear(fYear)
         file.set_fPeriod(fPeriod)
         file.set_funding(funding)
+        file.set_SOURCE(SOURCE)
         file.set_folderQuery(folderQuery)
         file.set_fileName(i)
 
@@ -129,7 +136,7 @@ def PopulateDatabase(fileList):
             IMPORT_DATE = datetime.strptime(importDateString, '%Y-%m-%d')
             FYEAR = i.get_fYear()
             FPERIOD = i.get_fPeriod()
-            SOURCE = ""
+            SOURCE = i.get_SOURCE()
 
             # We have to hard code these in as strings so they can be passed to the front end easily.
             if PO_NO is None:

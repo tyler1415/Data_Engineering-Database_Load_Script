@@ -28,6 +28,12 @@ class File:
     def set_funding(self, funding):
         self.__funding = funding
 
+    def get_SOURCE(self):
+        return self.__SOURCE
+
+    def set_SOURCE(self, SOURCE):
+        self.__SOURCE = SOURCE
+
     def get_folderQuery(self):
         return self.__folderQuery
 
